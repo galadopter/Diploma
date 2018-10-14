@@ -1,3 +1,7 @@
+
+FROM ubuntu:18.04
+LABEL maintainer="Amet13 <admin@amet13.name>"
+
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
 ENV DIR /Kursach
