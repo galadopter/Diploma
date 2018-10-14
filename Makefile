@@ -1,16 +1,17 @@
-FILENAME=kursach
 
-all: clean build run
+all: build run
+
+.PHONY: build clean
 
 build:
-	latexmk -jobname=FILENAME -auxdir=./build/ -outdir=./build/ -pdf -synctex=1 main.tex
+	latexmk -jobname=kursach -auxdir=./build/ -outdir=./build/ -pdf -synctex=1 main.tex
 
 run:
-	open ./build/FILENAME.pdf &
+	open ./build/kursach.pdf &
 
 clean:
 	rm -rf ./build
 	
 docker:
 	docker build -t docker-latex .
-	docker run -ti -v ${PWD}:/ docker-latex bash -c "make build"
+	docker run -ti -v ${PWD}:/Kursach:Z docker-latex bash -c "make build"
