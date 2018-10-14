@@ -1,4 +1,4 @@
-all: build run
+all: clean build run
 
 build:
 	latexmk -auxdir=./build/ -outdir=./build/ -pdf -synctex=1 main.tex
