@@ -1,4 +1,4 @@
-# Kursach
+# Kursach [![Build Status](https://travis-ci.com/galadopter/Kursach.svg?branch=master)](https://travis-ci.com/galadopter/Kursach)
 This is LaTeX project for my course work's explanatory note
 
 # Requirements
