@@ -6,6 +6,10 @@ services:
 script:
   - make docker
 
+branches:
+  only:
+  - master
+  
 deploy:
   provider: releases
   # https://github.com/settings/tokens
