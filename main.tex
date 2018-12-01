@@ -1,3 +1,27 @@
+% \documentclass{extarticle}
+% \usepackage[T2A]{fontenc}
+% \usepackage[utf8]{inputenc}
+% \usepackage[russian]{babel}
+% \usepackage{titlesec}
+% \title{пример с приложениями}
+% \begin{document}
+% \section{раз}
+% текст
+% \section{два}
+% текст
+% \appendix
+% \titleformat{\section}[display]
+%   {\normalfont\Large\bfseries}
+%   {\centering Приложение\ \thesection\\(справочное)}
+%   {0pt}{\Large\centering}
+% \renewcommand{\thesection}{\Asbuk{section}}
+
+% \section{приложение раз}
+% текст
+% \section{приложение два}
+% текст
+% \end{document}
+
 \input{setup/preamble}
 \input{setup/macros}
 
@@ -5,9 +29,9 @@
 
 % Initial
 
-\input{content/title}
+\input{content/main/title}
 
-\input{content/table_of_contents}
+\input{content/main/table_of_contents}
 
 % Sections
 
@@ -19,10 +43,16 @@
 
 \input{content/sections/03_develop}
 
+\input{content/main/conclusion}
+
+\input{content/main/references}
+
 % Appendices
 
-\input{content/appendices/0A_conclusion}
+\BeginAppendices
 
-\input{content/appendices/0B_references}
+\input{content/appendices/0A_sequenceDiagram}
+
+\input{content/appendices/0B_erDiagram}
 
 \end{document}

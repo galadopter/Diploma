@@ -11,6 +11,8 @@
 % Зачем: Делает результирующий PDF "searchable and copyable".
 \usepackage{cmap}
 
+\usepackage{titlesec}
+
 % Зачем: Учет особенностей различных языков.
 \usepackage[russian]{babel}
 
@@ -24,6 +26,22 @@
 \newlength{\fivecharsapprox}
 \setlength{\fivecharsapprox}{6ex}
 
+\newcommand{\emptysection}[0]{{}}
+
+\newcommand{\BeginAppendices}[0]{%
+  \setcounter{section}{0}%
+  \setcounter{figure}{0}%
+  \renewcommand{\thesection}{\Asbuk{section}}%
+}
+
+\newcommand{\appendice}[1]{%
+  \stepcounter{section}%
+  \emptysection%
+  \begin{center}%
+  \textbf{\MakeUppercase{Приложение \thesection} \\ (обязательное)\\#1}%
+  \end{center}%
+  \addcontentsline{toc}{section}{Приложение \thesection}%
+}
 
 % Зачем: Добавляет отступы для абзацев.
 % Почему: Пункт 2.1.3 Требований по оформлению пояснительной записки.
