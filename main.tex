@@ -5,9 +5,9 @@
 
 % Initial
 
-\input{content/title}
+\input{content/main/title}
 
-\input{content/table_of_contents}
+\input{content/main/table_of_contents}
 
 % Sections
 
@@ -15,10 +15,26 @@
 
 \input{content/sections/01_subject}
 
+\input{content/sections/02_analysis}
+
+\input{content/sections/03_develop}
+
+\input{content/main/conclusion}
+
+\input{content/main/references}
+
 % Appendices
 
-\input{content/appendices/0A_conclusion}
+\BeginAppendices
 
-\input{content/appendices/0B_references}
+\input{content/appendices/0A_classDiagram}
+
+\input{content/appendices/0B_sequenceDiagram}
+
+\input{content/appendices/0C_erDiagram}
+
+\input{content/appendices/0D_algorithms}
+
+\input{content/appendices/0E_code}
 
 \end{document}

@@ -1,0 +1,134 @@
+//
+//  SGMainListViewModel.swift
+//  SmartGarland
+//
+//  Created by Mikhail Lyapich on 4/4/18.
+//
+
+import Foundation
+import UIKit
+import ReactiveSwift
+import RealmSwift
+
+protocol SGGarlands {
+    func getInsets() -> UIEdgeInsets
+    func getCellSize() -> CGSize
+}
+
+class SGMainListViewModel: NSObject {
+    
+    fileprivate let padding: CGFloat = 25
+    fileprivate let attitude: CGFloat = 3 / 5
+    fileprivate let attitudeForNet: CGFloat = 10 / 7
+    fileprivate var animationType = SGGarlandType.string
+    fileprivate let realm = try? Realm()
+    fileprivate var animations: Results<RealmAnimation>? {
+        didSet {
+            subscribeToChanges()
+        }
+    }
+    fileprivate let animationsChangingObserver: Signal<RealmCollectionChange<Results<RealmAnimation>>, NoError>.Observer
+    let signalAboutAnimationsChanging: Signal<RealmCollectionChange<Results<RealmAnimation>>, NoError>
+    
+    var notificationToken: NotificationToken?
+    var deviceName = ""
+    var netName = ""
+    var animationStatus = SGAnimationStatus.saved {
+        didSet {
+            changeAnimationType(type: self.animationType)
+        }
+    }
+    
+    override init() {
+        let (signalAboutAnimationsChanging, animationsChangingObserver) = Signal<RealmCollectionChange<Results<RealmAnimation>>, NoError>.pipe()
+        self.signalAboutAnimationsChanging = signalAboutAnimationsChanging
+        self.animationsChangingObserver = animationsChangingObserver
+        super.init()
+    }
+    
+    func configure(collectionView: UICollectionView, type: SGGarlandType) -> SignalProducer<Void, SGError> {
+        self.changeAnimationType(type: type)
+        if SGDataConfigurator.isNeedsToUpdateAnimations {
+            SGDataConfigurator.updateAnimationVersion()
+            self.saveJsonDataToDatabase(subdir: SGSubdirectory.garlandPreview)
+            return SGDataConfigurator.generateAllAnimations()
+        } else {
+            return SignalProducer.empty
+        }
+    }
+    
+    func changeAnimationType(type: SGGarlandType) {
+        self.animationType = type
+        let predicateString = animationStatus == .recieved ? type.identifier + animationStatus.identifier : type.identifier
+        animations = realm?.objects(RealmAnimation.self).filter(NSPredicate(format: "type == %@", predicateString)).sorted(byKeyPath: "createdDate")
+    }
+    
+    func generateTextAnimation(text: String, completionHandler: @escaping () -> Void) {
+        DispatchQueue.global().async {
+            let textAnimation = SGTextAnimation(text: text).generateJson(name: text, type: .net)
+            SGDataConfigurator.saveAnimationToDatabase(animation: textAnimation).startWithCompleted(completionHandler)
+        }
+    }
+    
+    deinit {
+        notificationToken?.invalidate()
+    }
+}
+
+//MARK - Private
+fileprivate extension SGMainListViewModel {
+    
+    func saveJsonDataToDatabase(subdir: String) {
+        let names = SGUtils.getFileNames(subdirectory: subdir)
+        DispatchQueue.global(qos: .userInitiated).async {
+            guard let realm = try? Realm() else { return }
+            try? realm.write {
+                for name in names {
+                    let animation = SGJsonManager.readJson(name: name, subdirectory: subdir)
+                    realm.add(RealmPreview(value: animation), update: true)
+                }
+            }
+        }
+    }
+    
+    func subscribeToChanges() {
+        notificationToken = animations?.observe { [weak self] (changes: RealmCollectionChange) in
+            self?.animationsChangingObserver.send(value: changes)
+        }
+    }
+}
+
+//MARK - Getters
+extension SGMainListViewModel: SGGarlands {
+    
+    func getCellSize() -> CGSize {
+        let width = self.animationType == .string ? (UIScreen.main.bounds.width - (padding * 3)) / 2 : (UIScreen.main.bounds.width - (padding * 2))
+        let height = self.animationType == .string ? width / attitude : width / attitudeForNet
+        return CGSize(width: width, height: height)
+    }
+    
+    func getAnimationName(indexPath: IndexPath) -> String {
+        return animations?[indexPath.row].name ?? ""
+    }
+    
+    func getAnimationSpeed(indexPath: IndexPath) -> Int {
+        return animations?[indexPath.row].speed ?? 0
+    }
+    
+    func getInsets() -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: padding, bottom: padding, right: padding)
+    }
+    
+    func getAnimationsCount() -> Int {
+        return animations?.count ?? 0
+    }
+    
+    func getAnimationTime(indexPath: IndexPath) -> Int {
+        return animations?[indexPath.row].totalTime ?? 0
+    }
+    
+    func getCurrentGarlandType() -> SGGarlandType {
+        return animationType
+    }
+    
+}

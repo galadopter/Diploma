@@ -1,0 +1,125 @@
+//
+//  BaseViewModel.swift
+//  SmartGarland
+//
+//  Created by Mikhail Lyapich on 5/5/18.
+//
+
+import Foundation
+import ReactiveSwift
+import SwiftSocket
+
+class SGBaseViewModel: NSObject {
+    
+    let dataConfigurator = SGDataConfigurator()
+    var animationId = 0
+    var animationName = ""
+    let socketRequest = SGSocketRequest()
+    private let fetcher = SGGarlandFetcher()
+    
+    func startAnimate() -> SignalProducer<Void, SGError> {
+        if animationId != 0 && animationId != 111 {
+            return sentControllerAnimation(with: animationId)
+        }
+        return garlandInit(with: getAnimationTotalTime())
+            .flatMap(.latest, turnOffGarland)
+            .flatMap(.latest, sendAnimation)
+            .flatMap(.latest, sentControllerAnimation)
+    }
+    
+    func setAnimation() -> SignalProducer<Void, SGError> {
+        return garlandInit(with: getAnimationTotalTime())
+            .flatMap(.latest, turnOffGarland)
+            .flatMap(.latest, sendAnimation)
+            .flatMap(.latest, sentControllerAnimation)
+    }
+    
+    func clearMemoryAndSendSwitch(protocolId: Int) -> SignalProducer<Void, SGError> {
+        return garlandInit(with: SGAnimationConstants.SGDynamicAnimation.totalTime)
+                .map { _ in return Void() }
+                .concat(sentControllerAnimation(with: protocolId))
+    }
+    
+    func sentControllerAnimation(with id: Int, withDelay: Bool = false) -> SignalProducer<Void, SGError> {
+        return SignalProducer { [weak self] sink, _ in
+            let when = DispatchTime.now() + (withDelay || id == SGNetworkConstants.SGProtocolIDs.waitingMode ? 6 : 0)
+            DispatchQueue.main.asyncAfter(deadline: when) {
+                self?.fetcher.switchAnimation(value: id).start { response in
+                    if let error = response.error {
+                        sink.send(error: SGError(message: error.errorDescription ?? ""))
+                    } else {
+                        sink.sendCompleted()
+                    }
+                }
+            }
+        }
+    }
+    
+    func protocolSetup(animationMode: SGGarlandAnimationMode) -> SignalProducer<Void, SGError> {
+        if animationMode == .dynamicM {
+            return clearMemoryAndSendSwitch(protocolId: SGNetworkConstants.SGProtocolIDs.editionDynamicMode)
+                .concat(socketRequest.connect())
+                .concat(socketRequest.send(data: [1]))
+        } else {
+            return sentControllerAnimation(with: SGNetworkConstants.SGProtocolIDs.editionStaticMode)
+                .concat(socketRequest.connect())
+                .concat(socketRequest.send(data: [0]))
+        }
+    }
+    
+    func disconnectFromController() {
+        clearMemoryAndSendSwitch(protocolId: SGNetworkConstants.SGProtocolIDs.offMode).startWithCompleted { [weak self] in
+            self?.socketRequest.disconnect()
+        }
+    }
+    
+    func getAnimationTotalTime() -> Int {
+        return dataConfigurator.getTotalTime()
+    }
+    
+    func sendBytesDataForStaticAnimation(address: Int, hexColor: String) {
+        let data = dataConfigurator.configureByteDataForStatic(address: address, hexColor: hexColor)
+        socketRequest.send(data: data).start()
+    }
+    
+    func sendBytesDataForDynamicAnimation(deltaT: Int, address: Int, hexColor: String) {
+        let data = dataConfigurator.configureByteData(deltaT: deltaT, address: address, hexColor: hexColor)
+        socketRequest.send(data: data).start()
+    }
+    
+}
+
+// MARK: Private
+fileprivate extension SGBaseViewModel {
+    
+    fileprivate func turnOffGarland(remainingMemory: Int) -> SignalProducer<Int, SGError> {
+        return fetcher.switchAnimation(value: 69)
+            .mapError { SGError(message: $0.errorDescription ?? "") }
+            .map { remainingMemory }
+    }
+    
+    fileprivate func sendAnimation(remainingMemory: Int) -> SignalProducer<(Int, Bool), SGError> {
+        return SignalProducer { [weak self] sink, _ in
+            guard let `self` = self else { return }
+            let lampsDictionaries = self.dataConfigurator.getLampsData()
+            print("animation bytes: \(lampsDictionaries.count)")
+            if lampsDictionaries.count < 150000 {
+                let socketConn = SGSocketRequest()
+                socketConn.connect().startWithCompleted {
+                    socketConn.send(data: lampsDictionaries).startWithCompleted {
+                        socketConn.disconnect()
+                        sink.send(value: (self.animationId, lampsDictionaries.count > 20000))
+                        sink.sendCompleted()
+                    }
+                }
+            } else {
+                sink.send(error: SGError(message: "Garland is too large", code: 0))
+                print("Too large")
+            }
+        }
+    }
+    
+    fileprivate func garlandInit(with animationTime: Int) -> SignalProducer<Int, SGError> {
+        return fetcher.initAnimation(time: animationTime).mapError { SGError(message: $0.errorDescription ?? "Error") }
+    }
+}
