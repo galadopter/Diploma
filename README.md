@@ -1,4 +1,4 @@
-# Diploma [![Build Status](https://travis-ci.com/galadopter/Kursach.svg?branch=master)](https://travis-ci.com/galadopter/Kursach)
+# Diploma [![Build Status](https://travis-ci.com/galadopter/Diploma.svg?branch=master)](https://travis-ci.com/galadopter/Diploma)
 This is LaTeX project for my diploma explanatory note
 
 # Requirements
