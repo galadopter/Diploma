@@ -16,6 +16,6 @@ deploy:
   # Add variable TOKEN in TravisCI settings
   api_key: $GITHUB_TOKEN
   file:
-    - "build/kursach.pdf"
+    - "build/diploma.pdf"
   name: Build $(date +'%d.%m.%Y %R')
   skip-cleanup: true
