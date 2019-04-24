@@ -5,33 +5,33 @@
 
 Функционирование украшения дома в данном проекте описаны с помощью функциональной модели IDEF0.
 
-Для представления процессов, возникающих при приобретении и использовании гирлянд (украшений) была разработана функциональная модель "Управление гирляндой". Процесс состоит из нескольких этапов, которые подробно описаны на рисунках~\ref{fig:develop:functionalModel:main}~–~\ref{fig:develop:functionalModel:a42_connecting}.
+Для представления процессов, возникающих при приобретении и использовании гирлянд (украшений) была разработана функциональная модель "Управление гирляндой". Процесс состоит из нескольких этапов, которые подробно описаны на рисунках~\ref{fig:analysis:functionalModel:main}~–~\ref{fig:analysis:functionalModel:a42_connecting}.
 
 ~
 \begin{figure}[H]
 \centering
 	\includegraphics[scale=0.45]{figures/functionalModel/main.jpg}
 	\caption{Контекстная диаграмма процесса управления гирляндой}
-	\label{fig:develop:functionalModel:main}
+	\label{fig:analysis:functionalModel:main}
 \end{figure}
 
-На рисунке~\ref{fig:develop:functionalModel:main} представлена контекстная диаграмма верхнего уровня, входными данными для которой являются дом без украшений и пожелания к ним. В рамках процесса на выходе получается украшенный дом. Далее в соответствии со вторым и третьим принципами, распишем основное действие на уровни.
+На рисунке~\ref{fig:analysis:functionalModel:main} представлена контекстная диаграмма верхнего уровня, входными данными для которой являются дом без украшений и пожелания к ним. В рамках процесса на выходе получается украшенный дом. Далее в соответствии со вторым и третьим принципами, распишем основное действие на уровни.
 
 Украшение дома декомпозировано на 4 блока: поиск, покупка, установка и настройка украшений.
 
-Функциональная модель управления гирляндой показана на рисунке~\ref{fig:develop:functionalModel:a0_decoration}.
+Функциональная модель управления гирляндой показана на рисунке~\ref{fig:analysis:functionalModel:a0_decoration}.
 
 ~
 \begin{figure}[H]
 \centering
 	\includegraphics[scale=0.45]{figures/functionalModel/a0_decoration.jpg}
 	\caption{Декомпозиция блока ``Управление гирляндой''}
-	\label{fig:develop:functionalModel:a0_decoration}
+	\label{fig:analysis:functionalModel:a0_decoration}
 \end{figure}
 
 Рассмотрим последовательно каждый блок.
 
-Первый блок (рисунок~\ref{fig:develop:functionalModel:a1_search}):
+Первый блок (рисунок~\ref{fig:analysis:functionalModel:a1_search}):
 
 Данный блок необходим для поиска подходящего украшения для дома. Данный процесс включает в себя вход в онлайн магазин, установку фильтров для поиска, просмотр результатов поиска, консультация с работником онлайн-магазина (для дополнительной фильтрации списка выбранных украшений) и, наконец, выбор подходящего варианта.
 
@@ -40,17 +40,17 @@
 \centering
 	\includegraphics[scale=0.45]{figures/functionalModel/a1_search.jpg}
 	\caption{Декомпозиция блока ``Поиск подходящих украшений''}
-	\label{fig:develop:functionalModel:a1_search}
+	\label{fig:analysis:functionalModel:a1_search}
 \end{figure}
 
-Второй блок представлен на рисунке~\ref{fig:develop:functionalModel:a2_buy}. Данный блок включает в себя добавление заказа (украшения) в корзину, ввод платежной информации, ввод информации о доставке (адрес, индекс и т.д.) и оплата товара.
+Второй блок представлен на рисунке~\ref{fig:analysis:functionalModel:a2_buy}. Данный блок включает в себя добавление заказа (украшения) в корзину, ввод платежной информации, ввод информации о доставке (адрес, индекс и т.д.) и оплата товара.
 
  ~
 \begin{figure}[H]
 \centering
 	\includegraphics[scale=0.45]{figures/functionalModel/a2_buy.jpg}
 	\caption{Декомпозиция блока ``Покупка выбранных украшений''}
-	\label{fig:develop:functionalModel:a2_buy}
+	\label{fig:analysis:functionalModel:a2_buy}
 \end{figure}
 
  ~
@@ -58,10 +58,10 @@
 \centering
 	\includegraphics[scale=0.45]{figures/functionalModel/a3_install.jpg}
 	\caption{Декомпозиция блока ``Установка украшений''}
-	\label{fig:develop:functionalModel:a3_install}
+	\label{fig:analysis:functionalModel:a3_install}
 \end{figure}
 
-Третий блок (рисунок~\ref{fig:develop:functionalModel:a3_install}):
+Третий блок (рисунок~\ref{fig:analysis:functionalModel:a3_install}):
 
 Данный блок описывает процесс установки купленного украшения в доме. Данный процесс включает в себя распаковку украшения, чтение инструкции, выбор места для украшения и его установка.
 
@@ -70,10 +70,10 @@
 \centering
 	\includegraphics[scale=0.45]{figures/functionalModel/a4_settings.jpg}
 	\caption{Декомпозиция блока ``Настройка украшений''}
-	\label{fig:develop:functionalModel:a4_settings}
+	\label{fig:analysis:functionalModel:a4_settings}
 \end{figure}
 
-Четвертый блок (рисунок~\ref{fig:develop:functionalModel:a4_settings}):
+Четвертый блок (рисунок~\ref{fig:analysis:functionalModel:a4_settings}):
 
 Данный блок описывает процесс настройки украшений. Данный процесс включает в себя загрузку приложения для управления украшениями, подключение их к приложению, калибровку и отправку уже откалиброванных анимаций на украшения. 
 
@@ -82,9 +82,9 @@
 \centering
 	\includegraphics[scale=0.45]{figures/functionalModel/a42_connecting.jpg}
 	\caption{Декомпозиция блока ``Подключение приложения к украшению''}
-	\label{fig:develop:functionalModel:a42_connecting}
+	\label{fig:analysis:functionalModel:a42_connecting}
 \end{figure}
 
-Декомпозиция четвертого блока (рисунок~\ref{fig:develop:functionalModel:a42_connecting}):
+Декомпозиция четвертого блока (рисунок~\ref{fig:analysis:functionalModel:a42_connecting}):
 
 Данная декомпозиция подробнее рассматривает процесс подключения мобильного приложения к украшению (украшениям). Она разбивает данный процесс на следующие компоненты: подключение напрямую к украшению через Wi-Fi, добавление украшения к местному роутеру (ввод пароля к точке). Затем идет процес подключения украшения к роутеру. После всего следует поиск украшения в списке доступных устройств.
