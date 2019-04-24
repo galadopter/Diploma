@@ -1,31 +1,37 @@
-\subsection{Описание бизнес-процесса приобретения и управления гирляндой}
+\subsection{Описание бизнес-процесса приобретения и управления адресной светодиодной лентой}
 \label{sec:analysis:businessProccess}
 
-Для того, чтобы воспользоваться всеми возможностями гирлянды, пользователь должен первоначально купить ее, установить ее в удобном месте, скачать описанное в записке программное обеспечение на мобильный телефон и провести процесс инициализации гирлянды.
+Для того, чтобы воспользоваться всеми возможностями адресной светодиодной ленты, пользователь должен первоначально купить ее, установить ее в удобном месте, скачать описанное в записке программное обеспечение на мобильный телефон и провести процесс инициализации адресной ленты.
 
 Функционирование украшения дома в данном проекте описаны с помощью функциональной модели IDEF0.
 
-Для представления процессов, возникающих при приобретении и использовании гирлянд (украшений) была разработана функциональная модель "Управление гирляндой". Процесс состоит из нескольких этапов, которые подробно описаны на рисунках~\ref{fig:analysis:functionalModel:main}~–~\ref{fig:analysis:functionalModel:a42_connecting}.
+Для представления процессов, возникающих при приобретении и использовании адресных светодиодных лент (украшений) была разработана функциональная модель \enquote{Управлять адресной светодиодной лентой}. Процесс состоит из нескольких этапов, которые подробно описаны на рисунках~\ref{fig:analysis:functionalModel:main}~–~\ref{fig:analysis:functionalModel:a42_connecting}.
 
 ~
 \begin{figure}[H]
 \centering
-	\includegraphics[scale=0.45]{figures/functionalModel/main.jpg}
-	\caption{Контекстная диаграмма процесса управления гирляндой}
+	\includegraphics[scale=0.45]{figures/functionalModel/main.png}
+	\caption{Контекстная диаграмма процесса управления адресной светодиодной лентой}
 	\label{fig:analysis:functionalModel:main}
 \end{figure}
 
-На рисунке~\ref{fig:analysis:functionalModel:main} представлена контекстная диаграмма верхнего уровня, входными данными для которой являются дом без украшений и пожелания к ним. В рамках процесса на выходе получается украшенный дом. Далее в соответствии со вторым и третьим принципами, распишем основное действие на уровни.
+На рисунке~\ref{fig:analysis:functionalModel:main} представлена контекстная диаграмма верхнего уровня, входными данными для которой являются дом без украшений и пожелания к ним. В рамках процесса на выходе получается украшенный дом. 
+
+К механизмам управления относятся Интернет, правила продажи украшений и планировка дома пользователя.
+
+Механизмы, осуществляющие процесс: работник онлайн-магазина, платежный сервис, система онлайн-заказа украшений, пользователь и само украшение (адресная светодиодная лента).
+
+Далее в соответствии со вторым и третьим принципами, распишем основное действие на уровни.
 
 Украшение дома декомпозировано на 4 блока: поиск, покупка, установка и настройка украшений.
 
-Функциональная модель управления гирляндой показана на рисунке~\ref{fig:analysis:functionalModel:a0_decoration}.
+Функциональная модель управления адресной светодиодной лентой показана на рисунке~\ref{fig:analysis:functionalModel:a0_decoration}.
 
 ~
 \begin{figure}[H]
 \centering
-	\includegraphics[scale=0.45]{figures/functionalModel/a0_decoration.jpg}
-	\caption{Декомпозиция блока ``Управление гирляндой''}
+	\includegraphics[scale=0.45]{figures/functionalModel/a0_decoration.png}
+	\caption{Декомпозиция блока \enquote{Управлять адресной светодиодной лентой}}
 	\label{fig:analysis:functionalModel:a0_decoration}
 \end{figure}
 
@@ -38,8 +44,8 @@
  ~
 \begin{figure}[H]
 \centering
-	\includegraphics[scale=0.45]{figures/functionalModel/a1_search.jpg}
-	\caption{Декомпозиция блока ``Поиск подходящих украшений''}
+	\includegraphics[scale=0.45]{figures/functionalModel/a1_search.png}
+	\caption{Декомпозиция блока \enquote{Искать подходящие украшения}}
 	\label{fig:analysis:functionalModel:a1_search}
 \end{figure}
 
@@ -48,16 +54,16 @@
  ~
 \begin{figure}[H]
 \centering
-	\includegraphics[scale=0.45]{figures/functionalModel/a2_buy.jpg}
-	\caption{Декомпозиция блока ``Покупка выбранных украшений''}
+	\includegraphics[scale=0.45]{figures/functionalModel/a2_buy.png}
+	\caption{Декомпозиция блока \enquote{Купить выбранные украшения}}
 	\label{fig:analysis:functionalModel:a2_buy}
 \end{figure}
 
  ~
 \begin{figure}[H]
 \centering
-	\includegraphics[scale=0.45]{figures/functionalModel/a3_install.jpg}
-	\caption{Декомпозиция блока ``Установка украшений''}
+	\includegraphics[scale=0.45]{figures/functionalModel/a3_install.png}
+	\caption{Декомпозиция блока \enquote{Установить украшения}}
 	\label{fig:analysis:functionalModel:a3_install}
 \end{figure}
 
@@ -68,8 +74,8 @@
  ~
 \begin{figure}[H]
 \centering
-	\includegraphics[scale=0.45]{figures/functionalModel/a4_settings.jpg}
-	\caption{Декомпозиция блока ``Настройка украшений''}
+	\includegraphics[scale=0.45]{figures/functionalModel/a4_settings.png}
+	\caption{Декомпозиция блока \enquote{Настроить украшения}}
 	\label{fig:analysis:functionalModel:a4_settings}
 \end{figure}
 
@@ -80,8 +86,8 @@
 ~
 \begin{figure}[H]
 \centering
-	\includegraphics[scale=0.45]{figures/functionalModel/a42_connecting.jpg}
-	\caption{Декомпозиция блока ``Подключение приложения к украшению''}
+	\includegraphics[scale=0.45]{figures/functionalModel/a42_connecting.png}
+	\caption{Декомпозиция блока \enquote{Подключить приложение к украшению}}
 	\label{fig:analysis:functionalModel:a42_connecting}
 \end{figure}
 
