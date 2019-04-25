@@ -4,7 +4,7 @@ LABEL maintainer="galadopter <admin@galadopter.name>"
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
-ENV DIR /Kursach
+ENV DIR /Diploma
 
 RUN mkdir $DIR
 RUN echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections
