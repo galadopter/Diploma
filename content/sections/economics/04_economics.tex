@@ -1,0 +1,328 @@
+\input{content/sections/economics/economic_macros}
+\input{content/sections/economics/calculations}
+
+\section{Технико-экономическое обоснование разработки программного средства}
+\subsection{Характеристика программного средства}
+
+Целью дипломного проекта является разработка игры \BinaryWars. Игра представляет собой продвинутый аналог игры \TicTacToe. На текущий момент на рынке если множество реализаций игры \TicTacToe, но многие из них не отличаются качеством исполнения или разнообразием игрового процесса, поэтому было принято решение разработки новой игры, которая призвана взять лучшие черты из его аналогов и объединить их в одном проекте.
+
+Среди достоинств проекта можно выделить наличие различных игровых режимов, возможность игры против компьютера с выбором уровня сложности. Также одной из самых главных возможностей является кроссплатформенная игра по сети интернет со случайными или определёнными оппонентами.
+
+Разработки проектов программных средств связана со значительными затратами ресурсов. В связи с этим создание и реализация каждого проекта программного обеспечения нуждается в соответствующем технико-экономическом обосновании \cite{Palitsyn, Gorovoi}, которое и описывается в данном разделе.
+
+Целесообразность создания ПС требует проведения предварительной экономической оценки. Экономический эффект у разработчика ПС зависит от объема инвестиций в разработку проекта, цены на готовый продукт и количества проданных копий, и проявляется в виде роста чистой прибыли.
+
+Оценка стоимости создания ПС со стороны разработчика предполагает составление сметы затрат, вычисление цены и прибыли от реализации разрабатываемого программного средства.
+
+
+\subsection{Определение объема и трудоемкости ПС}
+
+Исходные данные, которые будут использоваться при расчете сметы затрат, представлены в таблице \ref{Table:Economics:Data}.
+
+\begin{table}[!ht]
+\caption{Исходные данные}
+\label{Table:Economics:Data}
+\centering
+    \begin{tabular}{ |
+        >{\raggedright}m{0.6\textwidth} |
+        >{\centering}m{0.17\textwidth} |
+        >{\centering\arraybackslash}m{0.15\textwidth} |
+    }
+
+    \hline
+    \begin{center} Наименование показателя \end{center} & Условное обозначение &    Значение \\
+    \hline
+    Категория сложности & & 2 \\
+    \hline
+    Дополнительный коэффициент сложности & $\sum\limits_{i=1}^{n} \text{К}_i$ & \AdditionalComplexityRateValue \\
+    \hline
+    Степень охвата функций стандартными модулями & $\StandartModulesUsageFactorSymbol$ & \StandartModulesUsageFactorValue \\
+    \hline
+    Коэффициент новизны & $\NoveltyFactorSymbol$ & \NoveltyFactorValue \\
+    \hline
+    Количество дней в году & $\DaysInYearSymbol$ & \DaysInYearValue \\
+    \hline
+    Количество праздничных дней в году & $\HolidaysInYearSymbol$ & \HolidaysInYearValue \\
+    \hline
+    Количество выходных дней в году & $\WeekendDaysInYearSymbol$ & \WeekendDaysInYearValue \\
+    \hline
+    Количество дней отпуска & $\VacationDaysInYearSymbol$ & \VacationDaysInYearValue \\
+    \hline
+    Количество разработчиков & $\DevelopersNumberSymbol$ & \DevelopersNumberValue \\
+    \hline
+    Тарифная ставка первого разряда, \BYN & $\FirstRateTariffSymbol$ & \FirstRateTariffValue \\
+    \hline
+    Среднемесячная норма рабочего времени, ч. & $\AverageHoursPerMonthSymbol$ & \AverageHoursPerMonthValue \\
+    \hline
+    Продолжительность рабочей смены, ч. & $\HoursPerShiftSymbol$ & \HoursPerShiftValue \\
+    \hline
+    Коэффициент премирования & $\BonusRateSymbol$ & \BonusRateValue \\
+    \hline
+    Норматив дополнительной заработной платы & $\AdditionalWagesRateSymbol$ & \AdditionalWagesRateValue \\
+    \hline
+    Норматив отчислений в ФСЗН & $\SSFRateSymbol $ & \SSFRateValue \\
+    \hline
+    Норматив отчислений по обязательному страхованию & $\InsuranceRateSymbol $ & \InsuranceRateValue \\
+    \hline
+    Норматив расходов по статье <<Материалы>> & $\ConsumablesRateSymbol $ & \ConsumablesRateValue \\
+    \hline
+    Норматив расходов по статье <<Машинное время>> & $\MachineTimeRateSymbol $ & \MachineTimeRateValue \\
+    \hline
+    Понижающий коэффициент к статье <<Машинное время>> & & \MachineTimeReductionRateValue \\
+    \hline
+    Стоимость машино-часа, \BYN & $\MachineHourPriceSymbol$ & \MachineHourPriceValue \\
+    \hline
+    Норматив расходов по статье <<Прочие затраты>> & $\OtherChargesRateSymbol$ & \OtherChargesRateValue \\
+    \hline
+    Ставка НДС & $\VATRateSymbol$ & \VATRateValue \\
+    \hline
+    Предполагаемый объем продаж & $\SalesVolumeSymbol$ & \SalesVolumeValue \\
+    \hline
+    Цена на аналогичное ПО на рынке & $\AnalogPriceSymbol$ & \AnalogPriceValue \\
+    \hline
+    \end{tabular}
+\end{table}
+
+Перед определением сметы затрат на разработку программного средства необходимо определить его объём. Однако, на стадии ТЭО нет возможности рассчитать точные объемы функций, вместо этого с помощью применения действующих нормативов рассчитываются прогнозные оценки.
+
+В качестве метрики измерения объема программных средств используется строка их исходного кода (LOC -- lines of code). Данная метрика широко распространена, поскольку она непосредственно связана с конечным продуктом, может применяться на всём протяжении проекта и, кроме того, может использоваться для сопоставления размеров программного обеспечения. Далее под строкой исходного кода будем понимать количество исполняемых операторов.
+
+Расчет объема функций программного средства и общего объема приведен в таблице \ref{Table:Economics:FunctionSizes}.
+
+\begin{table}[!ht]
+\caption{Перечень и объём функций программного модуля}
+\label{Table:Economics:FunctionSizes}
+\centering
+    \begin{tabular}{ |
+        >{\centering}m{0.12\textwidth} |
+        >{\raggedright}m{0.6\textwidth} |
+        >{\centering\arraybackslash}m{0.2\textwidth} |
+    }
+
+    \hline
+    \No{} функции & \begin{center} Наименование (содержание) \end{center} & Объём функции, LOC \\
+    \hline
+    109 & Организация ввода/вывода информации в интерактивном режиме & \num{190} \\
+    \hline
+    207 & Манипулирование данными & \num{8000} \\
+    \hline
+    305 & Обработка файлов & \num{800} \\
+    \hline
+    506 & Обработка ошибочных и сбойных ситуаций & \num{500} \\
+    \hline
+    507 & Обеспечение интерфейса между компонентами & \num{750} \\
+    \hline
+    707 & Графический вывод результатов & \num{300} \\
+    \hline
+    & Общий объем & \TotalProgramSizeValue \\
+    \hline
+    \end{tabular}
+\end{table}
+
+Исходя из определенной 2-й категории сложности и общего объема ПС $\TotalProgramSizeSymbol = \TotalProgramSizeValue$, нормативная трудоемкость $\NormativeComplexitySymbol = \NormativeComplexityValue~\text{чел./д.}$ \cite{Palitsyn}. Перед определением общей трудоемкости разработки необходимо определить несколько коэффициентов.
+
+Коэффициент сложности, который учитывает дополнительные затраты труда, связанные с обеспечением интерактивного доступа и хранения, и поиска данных в сложных структурах \cite{Palitsyn}
+
+\begin{equation}
+    \ComplexityFactorSymbol = 1 + \sum_{i=1}^{n} \text{К}_i = 1 + \num{0.06} = \ComplexityFactorValue,
+\end{equation}
+\begin{explanation}
+где & $\text{К}_i$ & коэффициент, соответствующий степени повышения сложности за счет конкретной характеристики; \\
+    & $n$ & количество учитываемых характеристик.
+\end{explanation}
+
+Коэффициент $\StandartModulesUsageFactorSymbol$, учитывающий степень использования при разработке стандартных модулей, для разрабатываемого приложения, в котором степень охвата планируется на уровне около 50\%, примем равным \StandartModulesUsageFactorValue~\cite{Palitsyn}.
+
+Коэффициент новизны разрабатываемого программного средства $\NoveltyFactorSymbol$ примем равным \NoveltyFactorValue, так как разрабатываемом программное средство принадлежит определенному параметрическому ряду существующих програм\-мных средств \cite{Palitsyn}.
+
+Исходя из выбранных коэффициентов, общая трудоемкость разработки
+\begin{equation}
+     \TotalComplexitySymbol = \NormativeComplexitySymbol \cdot \ComplexityFactorSymbol \cdot \StandartModulesUsageFactorSymbol \cdot \NoveltyFactorSymbol = \NormativeComplexityValue \cdot \ComplexityFactorValue \cdot \StandartModulesUsageFactorValue \cdot \NoveltyFactorValue = \TotalComplexityValue~\text{чел./д.}
+\end{equation}
+
+Для расчета срока разработки проекта примем число разработчиков $\DevelopersNumberSymbol = \DevelopersNumberValue$. Исходя из комментария к постановлению Министерства труда и социальной защиты Республики Беларусь от 05.10.16 №54 <<Об установлении расчетной нормы рабочего времени на 2017 год>> \cite{LabourCalendar}, эффективный фонд времени работы одного человека составит
+\begin{equation}
+    \EffectiveWorkTimeFundSymbol = \DaysInYearSymbol - \HolidaysInYearSymbol - \WeekendDaysInYearSymbol - \VacationDaysInYearSymbol = \DaysInYearValue - \HolidaysInYearValue - \WeekendDaysInYearValue - \VacationDaysInYearValue = \EffectiveWorkTimeFundValue~\text{д.},
+\end{equation}
+\begin{explanation}
+где & $\DaysInYearSymbol$ & количество дней в году; \\
+    & $\HolidaysInYearSymbol$ & количество праздничных дней в году; \\
+    & $\WeekendDaysInYearSymbol$ & количество выходных дней в году; \\
+    & $\VacationDaysInYearSymbol$ & количество дней отпуска.
+\end{explanation}
+
+Тогда трудоемкость разработки проекта
+\begin{equation}
+    \DevelopmentTimeSymbol = \frac{\TotalComplexitySymbol}{\DevelopersNumberSymbol \cdot \EffectiveWorkTimeFundSymbol} = \frac{\TotalComplexityValue}{\DevelopersNumberValue \cdot \EffectiveWorkTimeFundValue} = \DevelopmentTimeYearsValue \text{г.} = \DevelopmentTimeValue~\text{д.}
+\end{equation}
+
+Исходя из того, что разработкой будет заниматься $\DevelopersNumberValue$ человека, можно запланировать фонд рабочего времени для каждого исполнителя
+\begin{equation}
+    \DeveloperWorkTimeFundSymbol = \frac{\DevelopmentTimeSymbol}{\DevelopersNumberSymbol} = \frac{\DevelopmentTimeValue}{\DevelopersNumberValue} \approx \DeveloperWorkTimeFundValue~\text{д}.
+\end{equation}
+
+
+\subsection{Расчет сметы затрат}
+
+Основной статьей расходов на создание ПО является заработная плата разработчиков проекта. Информация об исполнителях перечислена в таблице \ref{Table:Economics:Employees}. Кроме того, в таблице приведены данные об их тарифных разрядах, приведены разрядные коэффициенты, а также по формулам \ref{Equality:Economics:MonthWage} и \ref{Equality:Economics:HourWage} рассчитаны месячный и часовой оклады.
+\begin{equation}
+\label{Equality:Economics:MonthWage}
+    \text{T}_\text{м} = \FirstRateTariffSymbol \cdot \text{T}_\text{к},
+\end{equation}
+
+\begin{equation}
+\label{Equality:Economics:HourWage}
+    \text{T}_\text{ч} = \frac{\text{T}_\text{м}}{\AverageHoursPerMonthSymbol},
+\end{equation}
+\begin{explanation}
+где & $\text{T}_\text{м}$ & месячный оклад; \\
+    & $\FirstRateTariffSymbol$ & тарифная ставка 1-го разряда; \\
+    & $\text{T}_\text{к}$ & тарифный коэффициент; \\
+    & $\text{T}_\text{ч}$ & часовой оклад; \\
+    & $\AverageHoursPerMonthSymbol$ & среднемесячная норма рабочего времени (в 2017 г. составляет \AverageHoursPerMonthValue ч. \cite{LabourCalendar}).
+\end{explanation}
+
+\begin{table}[!ht]
+    \caption{Работники, занятые в проекте}
+    \label{Table:Economics:Employees}
+    \begin{tabular}{ |
+        >{\raggedright}m{0.3\textwidth} |
+        >{\centering}m{0.088\textwidth} |
+        >{\centering}m{0.18\textwidth} |
+        >{\centering}m{0.15\textwidth} |
+        >{\centering\arraybackslash}m{0.15\textwidth} |
+    }
+
+    \hline
+    \begin{center}Исполнитель\end{center} & Разряд & Тарифный коэффициент & Месячный оклад, \BYN & Часовой оклад, \BYN \\
+    \hline
+    Ведущий программист & 15 & \num{3.48} & \EmployeeAMonthWageValue & \EmployeeAHourWageValue\\
+    \hline
+    Художник & 11 & \num{2.4} & \EmployeeBMonthWageValue & \EmployeeBHourWageValue\\
+    \hline
+    \end{tabular}
+\end{table}
+
+Тогда основная заработная плата исполнителей составит
+\begin{equation}
+    \begin{aligned}
+        \BasicWageSymbol &= \sum_{i=1}^n \text{Т}_\text{чi} \cdot \text{Т}_\text{ч} \cdot \DeveloperWorkTimeFundSymbol \cdot K = \\
+        &= (\EmployeeAHourWageValue + \EmployeeBHourWageValue) \cdot \HoursPerShiftValue \cdot \DeveloperWorkTimeFundValue \cdot \BonusRateValue = \BasicWageValue~\BYN,
+    \end{aligned}
+\end{equation}
+\begin{explanation}
+где & $\text{Т}_\text{чi}$ & часовая тарифная ставка i-го исполнителя, \BYN; \\
+    & $\text{Т}_\text{ч}$ & количество часов работы в день; \\
+    & $\DeveloperWorkTimeFundSymbol$ & плановый фонд рабочего времени i-го исполнителя, д.; \\
+    & $K$ & коэффициент премирования (принятый равным \BonusRateValue).
+\end{explanation}
+
+Дополнительная заработная плата включает выплаты, предусмотренные законодательство о труде: оплата отпусков, льготных часов, времени выполнения государственных обязанностей и других выплат, не связанных с основной деятельностью исполнителей, и определяется по нормативу, установленному в организации, в процентах к основной заработной плате. Приняв данный норматив $\AdditionalWagesRateSymbol = \AdditionalWagesRateValue$, рассчитаем дополнительные выплаты
+\begin{equation}
+    \AdditionalWagesSymbol = \frac{\BasicWageSymbol \cdot \AdditionalWagesRateSymbol}{100\%} = \frac{\BasicWageValue \cdot \AdditionalWagesRateValue}{100\%} = \AdditionalWagesValue~\BYN
+\end{equation}
+
+Отчисления в фонд социальной защиты населения и в фонд обязательного страхования определяются в соответствии с действующим законодательством по нормативу в процентном отношении к фонду основной и дополнительной зарплат по следующим формулам
+\begin{equation}
+    \begin{aligned}
+        \SSFChargesSymbol &= \frac{(\BasicWageSymbol + \AdditionalWagesSymbol) \cdot \SSFRateSymbol}{100\%},\\[5mm]
+        \InsuranceChargesSymbol &= \frac{(\BasicWageSymbol + \AdditionalWagesSymbol) \cdot \InsuranceRateSymbol}{100\%}.
+    \end{aligned}
+\end{equation}
+
+В настоящее время нормы отчислений в ФСЗН $\SSFRateSymbol = \SSFRateValue$ и в фонд обязательного страхования $\InsuranceRateSymbol = \InsuranceRateValue$. Исходя из этого, размеры отчислений
+\begin{equation*}
+    \begin{aligned}
+        \SSFChargesSymbol &= \frac{(\BasicWageValue + \AdditionalWagesValue) \cdot \SSFRateValue}{100\%} = \SSFChargesValue~\BYN,\\[5mm]
+        \InsuranceChargesSymbol &= \frac{(\BasicWageValue + \AdditionalWagesValue) \cdot \InsuranceRateValue}{100\%} = \InsuranceChargesValue~\BYN\\[5mm]
+    \end{aligned}
+\end{equation*}
+
+Расходы по статье <<Материалы>> отражают траты на магнитные носители, бумагу, красящие материалы, необходимые для разработки ПО определяются по нормативу к фонду основной заработной платы разработчиков. Исходя из принятого норматива $\ConsumablesRateSymbol = \ConsumablesRateValue$ определим величину расходов
+
+\begin{equation}
+    \ConsumablesChargesSymbol = \frac{\BasicWageSymbol \cdot \ConsumablesRateSymbol}{100\%} = \frac{\BasicWageValue \cdot \ConsumablesRateValue}{100\%} = \ConsumablesChargesValue~\BYN\\[5mm]
+\end{equation}
+
+Расходы по статье <<Машинное время>> включают оплату машинного времени, необходимого для разработки и отладки ПО, которое определяется по нормативам на 100 строк исходного кода. Норматив зависит от характера решаемых задач и типа ПК; для текущего проекта примем $\MachineTimeRateSymbol = \MachineTimeRateValue$ \cite{Palitsyn}. Примем величину стоимости машино-часа $\MachineHourPriceSymbol = \MachineHourPriceValue \BYN$ Тогда, применяя понижающий коэффициент \MachineTimeReductionRateValue, получим величину расходов
+\begin{equation}
+    \MachineTimeChargesSymbol = \MachineHourPriceSymbol \cdot \frac{\TotalProgramSizeSymbol}{100} \cdot \MachineTimeRateSymbol = \MachineHourPriceValue \cdot \frac{\TotalProgramSizeValue}{100} \cdot \MachineTimeRateValue \cdot \MachineTimeReductionRateValue = \MachineTimeChargesValue~\BYN
+\end{equation}
+
+Расходы по статье <<Прочие затраты>> включают затраты на приобретение и подготовку специальной научно-технической информации и специальной литературы. Определяются по нормативу в процентах к основной заработной плате. Принимая норматив равным $\OtherChargesRateSymbol = \OtherChargesRateValue$ получим величину расходов
+\begin{equation}
+    \OtherChargesSymbol = \frac{\BasicWageSymbol \cdot \OtherChargesRateSymbol}{100\%} = \frac{\BasicWageValue \cdot \OtherChargesRateValue}{100\%} = \OtherChargesValue~\BYN
+\end{equation}
+
+Общая сумма расходов по смете определяется как сумма вышерассчитанных показателей
+\begin{equation}
+    \TotalChargesSymbol = \BasicWageSymbol + \AdditionalWagesSymbol + \SSFChargesSymbol + \InsuranceChargesSymbol + \ConsumablesChargesSymbol + \MachineTimeChargesSymbol + \OtherChargesSymbol = \TotalChargesValue~\BYN
+\end{equation}
+
+\begin{table}[!ht]
+\caption{Затраты на разработку программного обеспечения}
+\centering
+    \begin{tabular}{ |
+        >{\raggedright}m{0.797\textwidth} |
+        >{\centering\arraybackslash}m{0.15\textwidth} |
+    }
+
+    \hline
+    \begin{center} Статья затрат \end{center} & Cумма, руб.\\
+    \hline
+    Основная заработная плата исполнителей & \BasicWageValue \\
+    \hline
+    Дополнительная заработная плата & \AdditionalWagesValue \\
+    \hline
+    Отчисления в фонд социальной защиты населения & \SSFChargesValue \\
+    \hline
+    Отчисления в фонд обязательного страхования & \InsuranceChargesValue \\
+    \hline
+    Расходы по статье <<Материалы>> & \ConsumablesChargesValue \\
+    \hline
+    Расходы по статье <<Машинное время>> & \MachineTimeChargesValue \\
+    \hline
+    Прочие затраты & \OtherChargesValue \\
+    \hline
+    Общая сумма затрат на разработку & \TotalChargesValue \\
+    \hline
+    \end{tabular}
+\end{table}
+
+
+\subsection{Экономический эффект при разработке ПО для свободной реализации на рынке IT}
+
+Экономический эффект организации-разработчика программного обеспечения в данном случае заключается в получении прибыли от его продажи множеству потребителей. Прибыль от реализации в данном случае напрямую зависит от объемов продаж, цены реализации и затрат на разработку данного ПО.
+
+Таким образом, необходимо сделать обоснование предполагаемого объема продаж -- количества копий (лицензий) программного обеспечения, которое будет куплено клиентами за год (N). Данный прогноз может базироваться на экспертной оценке или на результатах маркетингового исследования. Могут использоваться и статистические данные.
+
+Рассчитаем налог на добавленную стоимость, приняв цену за единицу ПО $\AnalogPriceSymbol = \AnalogPriceValue$ \BYN
+\begin{equation}
+    \VATUnitSymbol = \frac{\AnalogPriceSymbol \cdot \VATRateSymbol}{100\%} = \frac{\AnalogPriceValue \cdot \VATRateValue}{100\%} = \VATUnitValue~\BYN
+\end{equation}
+
+Цена формируется на рынке под воздействием спроса и предложения. Тогда прибыль от продажи одной копии ПО составит
+\begin{equation}
+    \ProfitabilityUnitSymbol = \AnalogPriceSymbol - \VATUnitSymbol - \frac{\TotalChargesSymbol}{\SalesVolumeSymbol} =
+    \AnalogPriceValue - \VATUnitValue - \frac{\TotalChargesValue}{\SalesVolumeValue} = \ProfitabilityUnitValue~\BYN
+\end{equation}
+
+Cуммарная годовая прибыль по проекту в целом будет равна
+\begin{equation}
+    \YearProfitabilitySymbol = \ProfitabilityUnitSymbol \cdot \SalesVolumeSymbol = \ProfitabilityUnitValue \cdot \SalesVolumeValue = \YearProfitabilityValue~\BYN
+\end{equation}
+
+Далее рассчитывается рентабельность затрат на разработку ПО
+\begin{equation}
+    \ProfitabilityRateSymbol = \frac{\YearProfitabilitySymbol}{\TotalChargesSymbol} \cdot 100\% = \frac{\YearProfitabilityValue}{\TotalChargesValue} \cdot 100\% = \ProfitabilityRateValue
+\end{equation}
+
+Проект будет экономически эффективным, если рентабельность затрат на разработку программного обеспечения будет не меньше средней процентной ставки по банковским депозитным вкладам.
+
+В результате технико-экономического обоснования применения программного средства были получены следующие значения показателей эффективности:
+\begin{itemize}
+    \item суммарная годовая прибыль составит $\YearProfitabilitySymbol = \YearProfitabilityValue~\BYN$;
+    \item общая сумма расходов составит $\TotalChargesSymbol = \TotalChargesValue~\BYN$
+\end{itemize}
+
+Полученные результаты свидетельствуют об эффективности разработки и внедрения проектируемого программного средства.

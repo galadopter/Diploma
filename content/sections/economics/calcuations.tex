@@ -1,0 +1,126 @@
+\input{content/sections/economics/data}
+
+\newcommand{\TotalProgramSizeValue}{\num{\TotalProgramSize}}
+\newcommand{\NormativeComplexityValue}{\num{\NormativeComplexity}}
+\newcommand{\StandartModulesUsageFactorValue}{\num{\StandartModulesUsageFactor}}
+\newcommand{\NoveltyFactorValue}{\num{\NoveltyFactor}}
+\newcommand{\AdditionalComplexityRateValue}{\num{\AdditionalComplexityRate}}
+
+
+\FPeval{\ComplexityFactor}{clip(1 + \AdditionalComplexityRate)}
+\newcommand{\ComplexityFactorValue}{\num{\ComplexityFactor}}
+\FPeval{\TotalComplexity}{clip(\NormativeComplexity * \ComplexityFactor * \StandartModulesUsageFactor * \NoveltyFactor)}
+\FPeval{\TotalComplexityRounded}{round(\TotalComplexity, 0)}
+\newcommand{\TotalComplexityValue}{\num{\TotalComplexityRounded}}
+
+
+\newcommand{\DaysInYearValue}{\num{\DaysInYear}}
+\newcommand{\HolidaysInYearValue}{\num{\HolidaysInYear}}
+\newcommand{\WeekendDaysInYearValue}{\num{\WeekendDaysInYear}}
+\newcommand{\VacationDaysInYearValue}{\num{\VacationDaysInYear}}
+\FPeval{\EffectiveWorkTimeFund}{clip(\DaysInYear - \HolidaysInYear - \WeekendDaysInYear - \VacationDaysInYear)}
+\newcommand{\EffectiveWorkTimeFundValue}{\num{\EffectiveWorkTimeFund}}
+
+
+\FPeval{\DevelopersNumber}{2}
+\newcommand{\DevelopersNumberValue}{\num{\DevelopersNumber}}
+
+\FPeval{\DevelopmentTimeYears}{\TotalComplexity / (\DevelopersNumber * \EffectiveWorkTimeFund)}
+\FPeval{\DevelopmentTimeYearsRounded}{round(\DevelopmentTimeYears, 2)}
+\newcommand{\DevelopmentTimeYearsValue}{\num{\DevelopmentTimeYearsRounded}}
+
+\FPeval{\DevelopmentTime}{\DevelopmentTimeYears * \DaysInYear}
+\FPeval{\DevelopmentTimeRounded}{round(\DevelopmentTime, 0)}
+\newcommand{\DevelopmentTimeValue}{\num{\DevelopmentTimeRounded}}
+
+\FPeval{\DeveloperWorkTimeFund}{round(\DevelopmentTime / \DevelopersNumber, 0)}
+\newcommand{\DeveloperWorkTimeFundValue}{\num{\DeveloperWorkTimeFund}}
+
+
+\FPeval{\EmployeeAMonthWage}{\FirstRateTariff * 3.48}
+\FPeval{\EmployeeAMonthWageRounded}{round(\EmployeeAMonthWage, 2)}
+\newcommand{\EmployeeAMonthWageValue}{\num{\EmployeeAMonthWageRounded}}
+
+\FPeval{\EmployeeAHourWage}{\EmployeeAMonthWage / \AverageHoursPerMonth}
+\FPeval{\EmployeeAHourWageRounded}{round(\EmployeeAHourWage, 2)}
+\newcommand{\EmployeeAHourWageValue}{\num{\EmployeeAHourWageRounded}}
+
+\FPeval{\EmployeeBMonthWage}{\FirstRateTariff * 2.4}
+\FPeval{\EmployeeBMonthWageRounded}{round(\EmployeeBMonthWage, 2)}
+\newcommand{\EmployeeBMonthWageValue}{\num{\EmployeeBMonthWageRounded}}
+
+\FPeval{\EmployeeBHourWage}{\EmployeeBMonthWage / \AverageHoursPerMonth}
+\FPeval{\EmployeeBHourWageRounded}{round(\EmployeeBHourWage, 2)}
+\newcommand{\EmployeeBHourWageValue}{\num{\EmployeeBHourWageRounded}}
+
+
+\newcommand{\FirstRateTariffValue}{\num{\FirstRateTariff}}
+\newcommand{\AverageHoursPerMonthValue}{\num{\AverageHoursPerMonth}}
+\newcommand{\HoursPerShiftValue}{\num{\HoursPerShift}}
+\newcommand{\BonusRateValue}{\num{\BonusRate}}
+
+
+\FPeval{\BasicWage}{(\EmployeeAHourWage + \EmployeeBHourWage) * \HoursPerShift * \DeveloperWorkTimeFund * \BonusRate}
+\FPeval{\BasicWageRounded}{round(\BasicWage, 2)}
+\newcommand{\BasicWageValue}{\num{\BasicWageRounded}}
+
+
+\newcommand{\AdditionalWagesRateValue}{\num{\AdditionalWagesRate}\%}
+\FPeval{\AdditionalWages}{\BasicWage * \AdditionalWagesRate / 100}
+\FPeval{\AdditionalWagesRounded}{round(\AdditionalWages, 2)}
+\newcommand{\AdditionalWagesValue}{\num{\AdditionalWagesRounded}}
+
+\newcommand{\SSFRateValue}{\num{\SSFRate}\%}
+\FPeval{\SSFCharges}{(\BasicWage + \AdditionalWages) * \SSFRate / 100}
+\FPeval{\SSFChargesRounded}{round(\SSFCharges, 2)}
+\newcommand{\SSFChargesValue}{\num{\SSFChargesRounded}}
+
+\newcommand{\InsuranceRateValue}{\num{\InsuranceRate}\%}
+\FPeval{\InsuranceCharges}{(\BasicWage + \AdditionalWages) * \InsuranceRate / 100}
+\FPeval{\InsuranceChargesRounded}{round(\InsuranceCharges, 2)}
+\newcommand{\InsuranceChargesValue}{\num{\InsuranceChargesRounded}}
+
+\newcommand{\ConsumablesRateValue}{\num{\ConsumablesRate}\%}
+\FPeval{\ConsumablesCharges}{\BasicWage * \ConsumablesRate / 100}
+\FPeval{\ConsumablesChargesRounded}{round(\ConsumablesCharges, 2)}
+\newcommand{\ConsumablesChargesValue}{\num{\ConsumablesChargesRounded}}
+
+\newcommand{\MachineTimeRateValue}{\num{\MachineTimeRate}\%}
+\newcommand{\MachineTimeReductionRateValue}{\num{\MachineTimeReductionRate}}
+\newcommand{\MachineHourPriceValue}{\num{\MachineHourPrice}}
+
+\FPeval{\MachineTimeCharges}{\MachineHourPrice * \TotalProgramSize / 100 * \MachineTimeRate * \MachineTimeReductionRate}
+\FPeval{\MachineTimeChargesRounded}{round(\MachineTimeCharges, 2)}
+\newcommand{\MachineTimeChargesValue}{\num{\MachineTimeChargesRounded}}
+
+\newcommand{\OtherChargesRateValue}{\num{\OtherChargesRate}\%}
+\FPeval{\OtherCharges}{\BasicWage * \OtherChargesRate / 100}
+\FPeval{\OtherChargesRounded}{round(\OtherCharges, 2)}
+\newcommand{\OtherChargesValue}{\num{\OtherChargesRounded}}
+
+
+\FPeval{\TotalCharges}{\BasicWage + \AdditionalWages + \SSFCharges + \InsuranceCharges + \ConsumablesCharges + \MachineTimeCharges + \OtherCharges}
+\FPeval{\TotalChargesRounded}{round(\TotalCharges, 2)}
+\newcommand{\TotalChargesValue}{\num{\TotalChargesRounded}}
+
+
+\newcommand{\AnalogPriceValue}{\num{\AnalogPrice}}
+\newcommand{\VATRateValue}{\num{\VATRate}\%}
+\newcommand{\SalesVolumeValue}{\num{\SalesVolume}}
+
+
+\FPeval{\VATUnit}{\AnalogPrice * \VATRate / 100}
+\FPeval{\VATUnitRounded}{round(\VATUnit, 2)}
+\newcommand{\VATUnitValue}{\num{\VATUnitRounded}}
+
+\FPeval{\ProfitabilityUnit}{\AnalogPrice - \VATUnit - \TotalCharges / \SalesVolume}
+\FPeval{\ProfitabilityUnitRounded}{round(\ProfitabilityUnit, 2)}
+\newcommand{\ProfitabilityUnitValue}{\num{\ProfitabilityUnitRounded}}
+
+\FPeval{\YearProfitability}{\ProfitabilityUnit * \SalesVolume}
+\FPeval{\YearProfitabilityRounded}{round(\YearProfitability, 2)}
+\newcommand{\YearProfitabilityValue}{\num{\YearProfitabilityRounded}}
+
+\FPeval{\ProfitabilityRate}{\YearProfitability / \TotalCharges * 100}
+\FPeval{\ProfitabilityRateRounded}{round(\ProfitabilityRate, 2)}
+\newcommand{\ProfitabilityRateValue}{\num{\ProfitabilityRateRounded}\%}
