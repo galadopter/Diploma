@@ -36,11 +36,11 @@
     \mainSalary=\sum_{i=1}^n \hourRateI*t_i,
     \label{eq:economic:salaryCalculation:salary}
 \end{equation}
-\begin{explanation}
-где & n & количество исполнителей, разрабатывающих программное средство; \\
-    & $\hourRateI$ & часовая тарифная ставка i-го исполнителя, $\BYN$; \\
-    & $t_i$ & трудоемкость работ, выполняемых i-ым исполнителем (ч).
-\end{explanation}
+где n~--- количество исполнителей, разрабатывающих программное средство;
+\begin{explanationx}
+    \item $\hourRateI$~--- часовая тарифная ставка i-го исполнителя, $\BYN$;
+    \item $t_i$~--- трудоемкость работ, выполняемых i-ым исполнителем (ч).
+\end{explanationx}
 
 В настоящий момент тарифная ставка 1-го разряда в компании составляет 265 рублей. Расчетная норма рабочего времени на 2019 год для пятидневной рабочей недели оставляет 168 часов. Штат исполнителей проекта состоит из руководителя проекта, инженера-программиста первой категории, дизайнера и тестировщика.
 
@@ -106,9 +106,7 @@
     \ssfCharges=\frac{(\mainSalary+\subSalary)*\ssfRate}{100},
     \label{eq:economic:salaryCalculation:ssfCharge}
 \end{equation}
-\begin{explanation}
-где & $\ssfRate$ & норматив отчислений в фонд социальной защиты населения и на обязательное страхование, 34 +0,6\%.
-\end{explanation}
+где $\ssfRate$~--- норматив отчислений в фонд социальной защиты населения и на обязательное страхование, 34 +0,6\%.
 
 Размер отчислений в фонд социальной защиты населения и на обязательное страхование согласно формуле (\ref{eq:economic:salaryCalculation:ssfCharge}) составит:
 \[
@@ -289,11 +287,11 @@
     \incomeForOne=\text{Ц}-\frac{\totalCharges+\realizationCharges}{\text{N}},
     \label{eq:economic:economicEffect:incomeForOne}
 \end{equation}
-\begin{explanation}
-где & $\text{Ц}$ & цена реализации одной лицензии ПО, $\BYN$; \\
-    & $\text{N}$ & количество лицензий, которое будет продано с 2019 по 2022 год; \\
-    & $\incomeForOne$ & прибыль, получаемая организацией-разработчиком от реализации одной копии программного продукта, руб.
-\end{explanation}
+где $\text{Ц}$~--- цена реализации одной лицензии ПО, $\BYN$;
+\begin{explanationx}
+    \item $\text{N}$~--- количество лицензий, которое будет продано с 2019 по 2022 год;
+    \item $\incomeForOne$~--- прибыль, получаемая организацией-разработчиком от реализации одной копии программного продукта, руб.
+\end{explanationx}
 
 Прибыль от продажи одной копии программного продукта, рассчитанная по формуле (\ref{eq:economic:economicEffect:incomeForOne}) составит:
 \[
@@ -349,10 +347,10 @@
     \discontCoefficient=\frac{1}{(1+\diffTimeStandard)^{\tau-1}},
     \label{eq:economic:effectData:discontCoefficient}
 \end{equation}
-\begin{explanation}
-где & $\diffTimeStandard$ & норматив приведения разновременных затрат и результатов, 16\%; \\
-    & $\tau$ & номер года, результаты и затраты которого приводятся к расчетному (2019-1, 2020-2, 2021-3, 2022-4).
-\end{explanation}
+где $\diffTimeStandard$~--- норматив приведения разновременных затрат и результатов, 16\%;
+\begin{explanationx}
+    \item $\tau$~--- номер года, результаты и затраты которого приводятся к расчетному (2019-1, 2020-2, 2021-3, 2022-4).
+\end{explanationx}
 
 На 01.05.2019 ставка рефинансирования ($\diffTimeStandard$) РБ составляет 10,5\%. Расчет коэффициента приведения за каждый год по формуле (\ref{eq:economic:effectData:discontCoefficient}) примут вид:
 
@@ -363,7 +361,7 @@
     \discontCoefficientForYear{4}=\frac{1}{(1+0,105)^{3}}=0,74
 \end{gather*}
 
-Результаты расчета показателей эффективности сведены в таблицу~\ref{table:economic:effectData:effectDataCalculation}.
+Результаты расчета показателей эффективности сведены в таблицу~4.3.
 
 Для определения экономической целесообразности инвестиций в разработку и использование необходимо определить чистый дисконтированный доход, срок окупаемости инвестиций и рентабельность инвестиций.
 
@@ -380,8 +378,11 @@
 \end{explanation}
 
 \begin{table}[H]
-\caption{Расчет экономического эффекта от реализации нового программного средства}
 \label{table:economic:effectData:effectDataCalculation}
+\begin{flushleft}
+Таблица 4.3~-- Расчет экономического эффекта от реализации нового программного средства
+\end{flushleft}
+\vspace{-1.1em}
 \centering
 \begin{tabular}{ |
     >{\raggedright}m{0.26\textwidth} |
@@ -391,7 +392,6 @@
     >{\centering}m{0.13\textwidth} |
     >{\centering\arraybackslash}m{0.13\textwidth} |
 }
-
     \hline
     \centering \multirow{2}{*}{\shortstack[c]{Наименование\\ показателей}} & \multirow{2}{*}{\shortstack[c]{Ед.\\ изм.}} & \multicolumn{4}{c|}{Расчетный период} \\
     \cline{3-6}
@@ -422,9 +422,7 @@
     \investmentProfitability=\frac{\averageIncome}{\text{З}}*100,
     \label{eq:economic:effectData:investmentProfitability}
 \end{equation}
-\begin{explanation}
-где & $\averageIncome$ & среднегодовая величина чистой прибыли за расчетный период, руб., которая определяется по формуле:
-\end{explanation}
+где $\averageIncome$~--- среднегодовая величина чистой прибыли за расчетный период, руб., которая определяется по формуле:
 
 \begin{equation}
     \averageIncome=\frac{\sum_{i=1}^n(\clearIncomeInYear)}{n},
