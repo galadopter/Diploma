@@ -1,7 +1,7 @@
 \subsection{Руководство пользователя}
 \label{sec:develop:userGuide}
 
-Первое что увидит пользователь при открытии приложения~--- экран подключения к адресной светодиодной ленте (Рисунок~\ref{fig:develop:userGuide:loading}). Если приложение не смогло загрузить список лент в сети (Рисунок), или подключиться к ленте напрямую, то показывается экран с возможностью попробовать еще раз (Рисунок~\ref{fig:develop:userGuide:failedLoading}), либо пропустить этот шаг и сразу перейти на главный экран приложения (Рисунок~\ref{fig:develop:userGuide:mainTree}).
+Первое, что увидит пользователь при открытии приложения~--- экран подключения к адресной светодиодной ленте (Рисунок~\ref{fig:develop:userGuide:loading}). Если приложение не смогло загрузить список лент в сети, или подключиться к ленте напрямую, то показывается экран с возможностью попробовать еще раз (Рисунок~\ref{fig:develop:userGuide:failedLoading}), либо пропустить этот шаг и сразу перейти на главный экран приложения (Рисунок~\ref{fig:develop:userGuide:mainTree}).
 
 ~
 \begin{figure}[H]
@@ -111,27 +111,27 @@
 	\label{fig:develop:userGuide:signUp}
 \end{figure}
 
-Если пользователь подключен к адресной светодиодной ленте напрямую (подключился к ней, как к Wi-Fi точке), то экран \enquote{Устройство} выглядит как на рисунке~\ref{fig:develop:userGuide:device}. На нем пользователь может подключить ее к существующему Wi-Fi роутеру и просмотреть информацию о адресной ленте (ip, mac адреса, версию прошивки, имя ленты и т.д.) (Рисунок~\ref{fig:develop:userGuide:device}). Если же пользователь подключен к роутеру, то он будет видеть список доступных адресных лент в этой сети (Рисунок~\ref{fig:develop:userGuide:device}).
+Если пользователь подключен к адресной светодиодной ленте напрямую (подключился к ней, как к Wi-Fi точке), то экран \enquote{Устройство} выглядит как на рисунке~\ref{fig:develop:userGuide:device}. На нем пользователь может подключить ее к существующему Wi-Fi роутеру и просмотреть информацию о адресной ленте (ip, mac адреса, версию прошивки, имя ленты и т.д.) (Рисунок~\ref{fig:develop:userGuide:fig:develop:userGuide:deviceInfo}). Если же пользователь подключен к роутеру, то он будет видеть список доступных адресных лент в этой сети (Рисунок~\ref{fig:develop:userGuide:deviceList}).
 
 ~
 \begin{figure}[H]
 \centering
 	\includegraphics[scale=0.2]{figures/userGuide/device.png}
-	\caption{Экран регистрации}
+	\caption{Экран со списком устройств в сети (пользователь подключен напрямую)}
 	\label{fig:develop:userGuide:device}
 \end{figure}
 ~
 \begin{figure}[H]
 \centering
-	\includegraphics[scale=0.2]{figures/userGuide/device.png}
-	\caption{Экран регистрации}
-	\label{fig:develop:userGuide:device}
+	\includegraphics[scale=0.2]{figures/userGuide/deviceInfo.png}
+	\caption{Экран с информацией об устройстве}
+	\label{fig:develop:userGuide:deviceInfo}
 \end{figure}
 ~
 \begin{figure}[H]
 \centering
-	\includegraphics[scale=0.2]{figures/userGuide/device.png}
-	\caption{Экран регистрации}
+	\includegraphics[scale=0.2]{figures/userGuide/deviceList.png}
+	\caption{Экран со списком устройств в сети (пользователь подключен к роутеру)}
 	\label{fig:develop:userGuide:device}
 \end{figure}
 
