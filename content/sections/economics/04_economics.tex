@@ -31,12 +31,12 @@
 \label{sec:economic:salaryCalculation}
 
 Основная заработная плата исполнителей проекта определяется по следующей формуле:
-
+\vspace{1.3em}
 \begin{equation}
     \mainSalary=\sum_{i=1}^n \hourRateI*t_i,
     \label{eq:economic:salaryCalculation:salary}
 \end{equation}
-
+\vspace{0.5em}
 \begin{explanation}
 где & $\hourRateI$ & часовая тарифная ставка i-го исполнителя, $\BYN$; \\
     & n & количество исполнителей, разрабатывающих программное средство; \\
@@ -86,42 +86,47 @@
 \end{table}
 
 Дополнительная заработная плата исполнителей проекта определяется по формуле:
-
+\vspace{1.3em}
 \begin{equation}
     \subSalary=\frac{\mainSalary*\subSalaryStandard}{100},
     \label{eq:economic:salaryCalculation:subsalary}
 \end{equation}
+\vspace{0.3em}
 \begin{explanation}
 где & $\subSalaryStandard$ & норматив дополнительной заработной платы, 10\%.
 \end{explanation}
 \vspace{-1em}
 
 После подстановки значений в формулу (\ref{eq:economic:salaryCalculation:subsalary}) дополнительная заработная плата составит:
+\vspace{0.5em}
 \begin{flalign*}
-\qquad\quad\subSalary&=\frac{10493,56*10}{100}=1049,36\:\BYN &
+\hspace{1.3cm}\subSalary&=\frac{10493,56*10}{100}=1049,36\:\BYN &
 \end{flalign*}
 
 Отчисления в фонд социальной защиты населения и на обязательное страхование ($\ssfCharges$) определяются в соответствии с действующими законодательными актами по формуле:
-
+\vspace{0.8em}
 \begin{equation}
     \ssfCharges=\frac{(\mainSalary+\subSalary)*\ssfRate}{100},
     \label{eq:economic:salaryCalculation:ssfCharge}
 \end{equation}
+\vspace{0.3em}
 \begin{explanation}
 где & $\ssfRate$ & норматив отчислений в фонд социальной защиты населения и на обязательное страхование, 34 +0,6\%.
 \end{explanation}
 
 Размер отчислений в фонд социальной защиты населения и на обязательное страхование согласно формуле (\ref{eq:economic:salaryCalculation:ssfCharge}) составит:
+\vspace{0.5em}
 \begin{flalign*}
-\qquad\quad\ssfCharges&=\frac{(10493,56+1049,36)*34,6}{100}=3993,85\:\BYN &
+\hspace{1.3cm}\ssfCharges&=\frac{(10493,56+1049,36)*34,6}{100}=3993,85\:\BYN &
 \end{flalign*}
 
 Расходы по статье \enquote{Машинное время} ($\machineTimeCharges$) определяются по формуле:
-
+\vspace{1.3em}
 \begin{equation}
     \machineTimeCharges=\machineHourPrice*\hoursPerShift*\projectDuration,
     \label{eq:economic:salaryCalculation:machineTime}
 \end{equation}
+% \vspace{0.4em}
 \begin{explanation}
 где & $\projectDuration$ & длительность проекта; \\
     & $\hoursPerShift$ & количество часов работы в день; \\
@@ -130,15 +135,16 @@
 
 Стоимость машино-часа на предприятии составляет 1,5 руб. Общее время работы на машинах между 4 сотрудниками составит 200 дней. Определим по формуле (\ref{eq:economic:salaryCalculation:machineTime}) затраты по статье \enquote{Машинное время}:
 \begin{flalign*}
-\qquad\quad\machineTimeCharges&=1,5*8*200=2400\:\BYN &
+\hspace{1.3cm}\machineTimeCharges&=1,5*8*200=2400\:\BYN &
 \end{flalign*}
 
 Затраты по статье \enquote{Накладные расходы} ($\overheadCosts$) связанные с необходимостью содержания аппарата управления, вспомогательных хозяйств и опытных (экспериментальных) производств, а также с расходами на общехозяйственные нужды ($\overheadCosts$), определяются по формуле:
-
+\vspace{1.3em}
 \begin{equation}
     \overheadCosts=\frac{\mainSalary*\overheadCostsStandard}{100},
     \label{eq:economic:salaryCalculation:overheadCosts}
 \end{equation}
+% \vspace{0.5em}
 \begin{explanation}
 где & $\overheadCostsStandard$ & норматив накланых расходов, 50\%.
 \end{explanation}
@@ -146,11 +152,10 @@
 
 После подстановки значений в формулу (\ref{eq:economic:salaryCalculation:overheadCosts}) накладные расходы составят:
 \begin{flalign*}
-\qquad\quad\overheadCosts&=\frac{10493,56*50}{100}=5246,78\:\BYN &
+\hspace{1.3cm}\overheadCosts&=\frac{10493,56*50}{100}=5246,78\:\BYN &
 \end{flalign*}
 
 Общая сумма расходов по всем статьям сметы ($\estimate$) на программное обеспечение рассчитывается по формуле:
-
 \begin{equation}
     \estimate=\mainSalaryI+\subSalaryI+\ssfChargesI+\machineTimeChargesI+\overheadCostsI,
     \label{eq:economic:salaryCalculation:estimate}
@@ -158,15 +163,16 @@
 
 По формуле (\ref{eq:economic:salaryCalculation:estimate}) получаем сумму расходов по всем статьям сметы:
 \begin{flalign*}
-\qquad\quad\estimate&=10493,56+1049,36+3993,85+2400+5246,78=23183,55\:\BYN &
+\hspace{1.3cm}\estimate&=10493,56+1049,36+3993,85+2400+5246,78=23183,55\:\BYN &
 \end{flalign*}
 
 Кроме того, организация-разработчик осуществляет затраты на сопровождение и адаптацию программного средства ($\stabilizationCosts$), которые определяются по формуле:
-
+\vspace{1.3em}
 \begin{equation}
     \stabilizationCosts=\frac{\estimate*\stabilizationCostsStandard}{100},
     \label{eq:economic:salaryCalculation:stabilizationCosts}
 \end{equation}
+\vspace{0.3em}
 \begin{explanation}
 где & $\stabilizationCostsStandard$ & норматив на сопровождение и адаптацию, 20\%.
 \end{explanation}
@@ -174,11 +180,10 @@
 
 Затраты на сопровождение и адаптацию программного продукта по формуле (\ref{eq:economic:salaryCalculation:stabilizationCosts}) составят:
 \begin{flalign*}
-\qquad\quad\stabilizationCosts&=\frac{23183,55*20}{100}=4636,71\:\BYN &
+\hspace{1.3cm}\stabilizationCosts&=\frac{23183,55*20}{100}=4636,71\:\BYN &
 \end{flalign*}
 
 Общая сумма расходов на разработку (с затратами на сопровождение и адаптацию) как полная себестоимость программного средства ($\totalCharges$) определяется по формуле:
-
 \begin{equation}
     \totalCharges=\estimate+\stabilizationCosts,
     \label{eq:economic:salaryCalculation:totalCharges}
@@ -186,32 +191,34 @@
 
 Полная себестоимость программного средства, рассчитанная по формуле (\ref{eq:economic:salaryCalculation:totalCharges}) составит:
 \begin{flalign*}
-\qquad\quad\totalCharges&=23183,55+4636,71=27820,26\:\BYN &
+\hspace{1.3cm}\totalCharges&=23183,55+4636,71=27820,26\:\BYN &
 \end{flalign*}
 
 Затраты на реализацию определяются по формуле:
-
+\vspace{0.5em}
 \begin{equation}
     \realizationCharges=\frac{\totalCharges*5}{100},
     \label{eq:economic:salaryCalculation:realizationCharges}
 \end{equation}
 
 Затраты на реализацию, рассчитанные по формуле (\ref{eq:economic:salaryCalculation:realizationCharges}) составят:
+\vspace{0.3em}
 \begin{flalign*}
-\qquad\quad\realizationCharges&=\frac{27820,26*5}{100}=1391,01\:\BYN &
+\hspace{1.3cm}\realizationCharges&=\frac{27820,26*5}{100}=1391,01\:\BYN &
 \end{flalign*}
 
 Общие затраты на разработку и реализацию программного средства:
 \begin{flalign*}
-\qquad\quad\text{З}&=\totalCharges+\realizationCharges=27820,26+1391,01=29211,27\:\BYN &
+\hspace{1.3cm}\text{З}&=\totalCharges+\realizationCharges=27820,26+1391,01=29211,27\:\BYN &
 \end{flalign*}
 
 Прибыль, включаемая в отпускную цену, рассчитывается по формуле:
-
+\vspace{0.5em}
 \begin{equation}
     \realizationProfit=\frac{\totalCharges*\profitablenessLevel}{100},
     \label{eq:economic:salaryCalculation:realizationProfit}
 \end{equation}
+\vspace{0.1em}
 \begin{explanation}
 где & $\realizationProfit$ & прибыль от реализации программного средства; \\
     & $\totalCharges$ & себестоимость программного средства; \\
@@ -219,12 +226,14 @@
 \end{explanation}
 
 Прибыль, включаемая в отпускную цену, составит в численном выражении:
+\vspace{0.5em}
 \begin{flalign*}
-\qquad\quad\realizationProfit&=\frac{27820,26*25}{100}=6955,07\:\BYN &
+\hspace{1.3cm}\realizationProfit&=\frac{27820,26*25}{100}=6955,07\:\BYN &
 \end{flalign*}
+\vspace{0.1em}
 
 Так как ООО \enquote{Сампад} является резидентом ПВТ, то данная компания освобождена от налога на добавленную стоимость (НДС). Прогнозируемая отпускная цена программного средства рассчитывается по следующей формуле:
-
+\vspace{1.3em}
 \begin{equation}
     \priceForecast=\totalCharges+\realizationProfit,
     \label{eq:economic:salaryCalculation:priceForecast}
@@ -232,7 +241,7 @@
 
 Прогнозируемая отпускная цена программного средства составит:
 \begin{flalign*}
-\qquad\quad\priceForecast&=27820,26+6955,07=34775,33\:\BYN &
+\hspace{1.3cm}\priceForecast&=27820,26+6955,07=34775,33\:\BYN &
 \end{flalign*}
 
 Полученные в процессе расчетов значения представлены в таблице~\ref{table:economic:salaryCalculation:totalChargesAndPrices}.
@@ -285,7 +294,7 @@
 На основании маркетингового исследования цена одной копии лицензии составила 170 руб. При этом лицензии на программный продует будут востребованы на рынке в течение четырех лет: в 2019 году планируется продать 100 лицензий, в 2020 году – 200 лицензий, в 2021 году – 200 лицензий и в 2022 году – 250 лицензий.
 
 Прибыль от продажи одной лицензии программного продукта определятся по формуле:
-
+\vspace{1.3em}
 \begin{equation}
     \incomeForOne=\text{Ц}-\frac{\totalCharges+\realizationCharges}{\text{N}},
     \label{eq:economic:economicEffect:incomeForOne}
@@ -294,34 +303,33 @@
 где & $\incomeForOne$ & прибыль, получаемая организацией-разработчиком от реализации одной копии программного продукта, руб; \\
     & $\text{Ц}$ & цена реализации одной лицензии ПО, $\BYN$; \\
     & $\text{N}$ & количество лицензий, которое будет продано с 2019 по 2022 год.
-    
 \end{explanation}
 
 Прибыль от продажи одной копии программного продукта, рассчитанная по формуле (\ref{eq:economic:economicEffect:incomeForOne}) составит:
+\vspace{0.5em}
 \begin{flalign*}
-\qquad\quad\incomeForOne&=170-\frac{27820,26+1391,01}{550}=116,89\:\BYN &
+\hspace{1.3cm}\incomeForOne&=170-\frac{27820,26+1391,01}{550}=116,89\:\BYN &
 \end{flalign*}
+
 
 Экономический эффект организации-разработчика программного обеспечения в данном случае заключается в получении прибыли от его продажи множеству потребителей. Прибыль от реализации в данном случае напрямую зависит от объемов продаж, цены реализации и затрат на разработку ПО.
 
 Суммарная годовая прибыль рассчитывается по формуле:
-
 \begin{equation}
     \yearIncome=\incomeForOne*\text{N},
     \label{eq:economic:economicEffect:yearIncome}
 \end{equation}
 
 Суммарная годовая прибыль за каждый год, рассчитанная по формуле (\ref{eq:economic:economicEffect:yearIncome}), составит:
-
 \begin{flalign*}
-\qquad\quad\incomeForYear{2019}&=116,89*100=11689\:\BYN &\\
-\qquad\quad\incomeForYear{2020}&=116,89*200=23378\:\BYN &\\
-\qquad\quad\incomeForYear{2021}&=116,89*200=23378\:\BYN &\\
-\qquad\quad\incomeForYear{2022}&=116,89*250=29222,50\:\BYN &
+\hspace{1.3cm}\incomeForYear{2019}&=116,89*100=11689\:\BYN &\\
+\hspace{1.3cm}\incomeForYear{2020}&=116,89*200=23378\:\BYN &\\
+\hspace{1.3cm}\incomeForYear{2021}&=116,89*200=23378\:\BYN &\\
+\hspace{1.3cm}\incomeForYear{2022}&=116,89*250=29222,50\:\BYN &
 \end{flalign*}
 
 Чистая прибыль рассчитывается по формуле:
-
+\vspace{1.3em}
 \begin{equation}
     \text{ЧП}=\text{П}-\frac{\text{П}*\incomeTaxe}{100},
     \label{eq:economic:economicEffect:yearIncome}
@@ -332,12 +340,11 @@
 \vspace{-1em}
 
 Таким образом, чистая прибыль за каждый год реализации программного продукта составит:
-
 \begin{flalign*}
-\qquad\quad\clearIncomeForYear{2019}&=11689-\frac{11689*12}{100}=10286,32\:\BYN &\\
-\qquad\quad\clearIncomeForYear{2020}&=20572,64\:\BYN &\\
-\qquad\quad\clearIncomeForYear{2021}&=20572,64\:\BYN &\\
-\qquad\quad\clearIncomeForYear{2022}&=25715,80\:\BYN &
+\hspace{1.3cm}\clearIncomeForYear{2019}&=11689-\frac{11689*12}{100}=10286,32\:\BYN &\\
+\hspace{1.3cm}\clearIncomeForYear{2020}&=20572,64\:\BYN &\\
+\hspace{1.3cm}\clearIncomeForYear{2021}&=20572,64\:\BYN &\\
+\hspace{1.3cm}\clearIncomeForYear{2022}&=25715,80\:\BYN &
 \end{flalign*}
 
 % subsection sec:economic:economicEffect (end)
@@ -346,7 +353,6 @@
 \label{sec:economic:effectData}
 
 Для расчета показателей экономической эффективности использования программного продукта, необходимо полученные суммы результата (прироста чистой прибыли) и затрат (капитальных вложений) по годам привести к единому времени~--- расчетному году (за расчетный год принят 2019 год) путем умножения результатов и затрат за каждый код на коэффициент дисконтирования ($\discontCoefficient$), который рассчитывается по формуле:
-
 \begin{equation}
     \discontCoefficient=\frac{1}{(1+\diffTimeStandard)^{\tau-1}},
     \label{eq:economic:effectData:discontCoefficient}
@@ -357,12 +363,11 @@
 \end{explanation}
 
 На 01.05.2019 ставка рефинансирования ($\diffTimeStandard$) РБ составляет 10,5\%. Расчет коэффициента приведения за каждый год по формуле (\ref{eq:economic:effectData:discontCoefficient}) примут вид:
-
 \begin{flalign*}
-\qquad\quad\discontCoefficientForYear{1}&=\frac{1}{(1+0,105)^{0}}=1 &\\
-\qquad\quad\discontCoefficientForYear{2}&=\frac{1}{(1+0,105)^{1}}=0,90 &\\
-\qquad\quad\discontCoefficientForYear{3}&=\frac{1}{(1+0,105)^{2}}=0,82 &\\
-\qquad\quad\discontCoefficientForYear{4}&=\frac{1}{(1+0,105)^{3}}=0,74 &
+\hspace{1.3cm}\discontCoefficientForYear{1}&=\frac{1}{(1+0,105)^{0}}=1 &\\
+\hspace{1.3cm}\discontCoefficientForYear{2}&=\frac{1}{(1+0,105)^{1}}=0,90 &\\
+\hspace{1.3cm}\discontCoefficientForYear{3}&=\frac{1}{(1+0,105)^{2}}=0,82 &\\
+\hspace{1.3cm}\discontCoefficientForYear{4}&=\frac{1}{(1+0,105)^{3}}=0,74 &
 \end{flalign*}
 
 Результаты расчета показателей эффективности сведены в таблицу~4.3.
@@ -370,7 +375,6 @@
 Для определения экономической целесообразности инвестиций в разработку и использование необходимо определить чистый дисконтированный доход, срок окупаемости инвестиций и рентабельность инвестиций.
 
 Чистый дисконтированный доход (ЧДД) рассчитывается по формуле:
-
 \begin{equation}
     \text{ЧДД}=\sum_{\tau=1}^n(\effectResult*\discontCoefficient-\investments*\discontCoefficient),
     \label{eq:economic:effectData:clearDiscontIncome}
@@ -382,11 +386,8 @@
 \end{explanation}
 
 \begin{table}[H]
+\caption{Расчет экономического эффекта от реализации нового программного средства}
 \label{table:economic:effectData:effectDataCalculation}
-\begin{flushleft}
-Таблица 4.3~-- Расчет экономического эффекта от реализации нового программного средства
-\end{flushleft}
-\vspace{-1.1em}
 \centering
 \begin{tabular}{ |
     >{\raggedright}m{0.26\textwidth} |
@@ -421,7 +422,7 @@
 Так как чистый дисконтированный доход больше нуля, то проект эффективен, то есть инвестиции в разработку данного ПО экономически целесообразны.
 
 Рассчитаем рентабельность инвестиций в разработку и внедрение программного продукта ($\investmentProfitability$) по формуле:
-
+\vspace{0.5em}
 \begin{equation}
     \investmentProfitability=\frac{\averageIncome}{\text{З}}*100,
     \label{eq:economic:effectData:investmentProfitability}
@@ -441,12 +442,12 @@
 
 По формуле (\ref{eq:economic:effectData:averageIncome}) среднегодовую величину чистой прибыли за расчетный период:
 \begin{flalign*}
-\qquad\quad\averageIncome&=\frac{5143,16+20572,64+20572,64+25715,80}{4}=14143,69\:\BYN &
+\hspace{1.3cm}\averageIncome&=\frac{5143,16+20572,64+20572,64+25715,80}{4}=14143,69\:\BYN &
 \end{flalign*}
 
 Подставив данное значени в формулу (\ref{eq:economic:effectData:investmentProfitability}) получим рентабельность инвестиций в разработку и внедрение программного продукта:
 \begin{flalign*}
-\qquad\quad\investmentProfitability&=\frac{14143,69}{27820,26}=51\% &
+\hspace{1.3cm}\investmentProfitability&=\frac{14143,69}{27820,26}=51\% &
 \end{flalign*}
 
 В результате технико-экономического обоснования разработки программного средства управления адресной светодиодной лентой были получены следующие показатели:

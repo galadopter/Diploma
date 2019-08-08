@@ -3,6 +3,7 @@ import Foundation
 import Realm
 import Realm.Private
 
+
 extension Realm {
     /**
      A `Configuration` instance describes the different options used to create an instance of a Realm.
@@ -47,6 +48,7 @@ extension Realm {
                 if let inMemoryIdentifier = inMemoryIdentifier {
                     self.inMemoryIdentifier = inMemoryIdentifier
                 }
+
                 if let syncConfiguration = syncConfiguration {
                     self.syncConfiguration = syncConfiguration
                 }
@@ -94,6 +96,7 @@ extension Realm {
 
         /// A string used to identify a particular in-memory Realm. Mutually exclusive with `fileURL` and
         /// `syncConfiguration`.
+
         public var inMemoryIdentifier: String? {
             set {
                 _path = nil
@@ -140,6 +143,7 @@ extension Realm {
         /**
          A block called when opening a Realm for the first time during the
          life of a process to determine if it should be compacted before being
+
          returned to the user. It is passed the total file size (data + free space)
          and the total bytes used by data in the file.
 
@@ -182,10 +186,12 @@ extension Realm {
             configuration.schemaVersion = self.schemaVersion
             configuration.migrationBlock = self.migrationBlock.map { accessorMigrationBlock($0) }
             configuration.deleteRealmIfMigrationNeeded = self.deleteRealmIfMigrationNeeded
+
             if let shouldCompactOnLaunch = self.shouldCompactOnLaunch {
                 configuration.shouldCompactOnLaunch = ObjectiveCSupport.convert(object: shouldCompactOnLaunch)
             } else {
                 configuration.shouldCompactOnLaunch = nil
+
             }
             configuration.setCustomSchemaWithoutCopying(self.customSchema)
             configuration.disableFormatUpgrade = self.disableFormatUpgrade
@@ -225,6 +231,7 @@ extension Realm.Configuration: CustomStringConvertible {
     public var description: String {
         return gsub(pattern: "\\ARLMRealmConfiguration",
                     template: "Realm.Configuration",
+                    
                     string: rlmConfiguration.description) ?? ""
     }
 }

@@ -41,6 +41,7 @@ class SGBaseViewModel: NSObject {
     }
     
     func sentControllerAnimation(with id: Int, withDelay: Bool = false) -> SignalProducer<Void, SGError> {
+        
         return SignalProducer { [weak self] sink, _ in
             let when = DispatchTime.now() + (withDelay || id == SGNetworkConstants.SGProtocolIDs.waitingMode ? 6 : 0)
             DispatchQueue.main.asyncAfter(deadline: when) {
@@ -84,6 +85,7 @@ class SGBaseViewModel: NSObject {
     
     func sendBytesDataForDynamicAnimation(deltaT: Int, address: Int, hexColor: String) {
         let data = dataConfigurator.configureByteData(deltaT: deltaT, address: address, hexColor: hexColor)
+        
         socketRequest.send(data: data).start()
     }
     

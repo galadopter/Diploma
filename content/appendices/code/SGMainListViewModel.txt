@@ -1,6 +1,7 @@
 //
 //  SGMainListViewModel.swift
 //  SmartGarland
+
 //
 //  Created by Mikhail Lyapich on 4/4/18.
 //
@@ -40,6 +41,8 @@ class SGMainListViewModel: NSObject {
     }
     
     override init() {
+
+
         let (signalAboutAnimationsChanging, animationsChangingObserver) = Signal<RealmCollectionChange<Results<RealmAnimation>>, NoError>.pipe()
         self.signalAboutAnimationsChanging = signalAboutAnimationsChanging
         self.animationsChangingObserver = animationsChangingObserver
@@ -84,6 +87,7 @@ fileprivate extension SGMainListViewModel {
             guard let realm = try? Realm() else { return }
             try? realm.write {
                 for name in names {
+
                     let animation = SGJsonManager.readJson(name: name, subdirectory: subdir)
                     realm.add(RealmPreview(value: animation), update: true)
                 }
@@ -119,9 +123,7 @@ extension SGMainListViewModel: SGGarlands {
         return UIEdgeInsets(top: 0, left: padding, bottom: padding, right: padding)
     }
     
-    func getAnimationsCount() -> Int {
-        return animations?.count ?? 0
-    }
+    func getAnimationsCount() -> Int { return animations?.count ?? 0 }
     
     func getAnimationTime(indexPath: IndexPath) -> Int {
         return animations?[indexPath.row].totalTime ?? 0
@@ -130,5 +132,4 @@ extension SGMainListViewModel: SGGarlands {
     func getCurrentGarlandType() -> SGGarlandType {
         return animationType
     }
-    
 }

@@ -35,6 +35,8 @@
   \renewcommand{\thesection}{\Asbuk{section}}%
 }
 
+\AtBeginEnvironment{figure}{\setlength{\intextsep}{0.1\baselineskip}}
+
 \usepackage{fancyhdr}
 % \usepackage[margin=1.0in,headheight=200pt]{geometry}
 
@@ -50,7 +52,7 @@
   \thispagestyle{plain}%
   \pagestyle{fancy}%
   % \setlength{\headheight}{5pt}%
-  \fancyhead[CO,CE]{\vspace{1em}Продолжение приложения \thesection\vspace{10pt}}%
+  \fancyhead[CO,CE]{\vspace{1.5em}Продолжение приложения \thesection\vspace{15pt}}%
   \addcontentsline{toc}{section}{Приложение \thesection~(обязательное) #1}%
 }
 \renewcommand{\headrulewidth}{0pt}
@@ -150,7 +152,7 @@
 \fancypagestyle{plain}{ 
     \fancyhf{}
     \rfoot{\thepage}}
-\setlength{\footskip}{6mm}
+\setlength{\footskip}{5mm}
 
 
 % Зачем: Задает стиль заголовков раздела жирным шрифтом, прописными буквами, без точки в конце
@@ -258,7 +260,7 @@
 \DeclareCaptionLabelSeparator{stbsubfiguresep}{)~}
 \captionsetup{labelsep=stb}
 \captionsetup[subfigure]{labelformat=stbsubfigure,labelsep=stbsubfiguresep}
-\captionsetup[figure]{labelformat=stbfigure,justification=centering,skip=15pt}
+\captionsetup[figure]{labelformat=stbfigure,justification=centering,skip=15pt,belowskip=10pt}
 \captionsetup[table]{labelformat=stbtable,justification=raggedright,format=hang,skip=0pt}
 \renewcommand{\thesubfigure}{\asbuk{subfigure}}
 
@@ -292,7 +294,7 @@
     %\par 
     %\tabularx{\textwidth-\fivecharsapprox}{@{}ll@{ --- } X }
     %% без отступа, СТП-01 2013
-    \noindent 
+    \noindent
     \tabularx{\textwidth}{@{}ll@{ --- } X }
     }
     { 
